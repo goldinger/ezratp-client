@@ -1,6 +1,6 @@
 <?php
 
-$bdd = new PDO('mysql:host=213.32.19.136;dbname=users', 'root', 'VnCdE28u');
+//$bdd = new PDO('mysql:host=213.32.19.136;dbname=users', 'root', 'VnCdE28u');
 if(isset($_POST['formsignup'])){
     if(!empty($_POST['username']) AND !empty($_POST['email']) AND !empty($_POST['email2']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
         echo "allrigh";
