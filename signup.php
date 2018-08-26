@@ -44,7 +44,7 @@ if(isset($_POST['formsignup'])){
                     </tr>
                     <tr align="right">
                         <td></td>
-                        <td><br><input type="submit" value="Sign Up !"></td>
+                        <td><br><input name="formsignup" type="submit" value="Sign Up !"></td>
                     </tr>
                 </table>
             </form>
