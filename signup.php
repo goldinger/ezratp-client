@@ -14,9 +14,28 @@ if(isset($_POST['formsignup'])){
             if($email == $email2){
                 if(filter_var($email, FILTER_VALIDATE_EMAIL)){
                     if ($password == $password2) {
-                        $insertmbr = $db->prepare("INSERT INTO users(username, email, password) VALUES (?, ?, ?)");
-                        $insertmbr->execute(array($username, $email, $password));
-                        $error = "OK !!";
+                        $req_username = $db->prepare("SELECT * FROM users WHERE username = ?");
+                        $req_username->execute(array($username));
+                        $username_exists = $req_username->rowCount();
+                        if($username_exists == 0){
+                            $req_email = $db->prepare("SELECT * FROM user WHERE email = ?");
+                            $req_email->execute(array($email));
+                            $email_exists = $req_email->rowCount();
+
+                            if($email_exists == 0){
+                                $insertmbr = $db->prepare("INSERT INTO users(username, email, password) VALUES (?, ?, ?)");
+                                $insertmbr->execute(array($username, $email, $password));
+                                $error = "OK !!";
+                            }
+                            else {
+                                $error = "Email already exists";
+                            }
+                        }
+                        else {
+                            $error = "Username already exists";
+                        }
+
+
                     } else {
                         $error = "Passwords does not match";
                     }
