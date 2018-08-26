@@ -1,20 +1,40 @@
 <?php
 
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=ezratp', 'root', 'VnCdE28u');
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "success";
-}
-catch (PDOException $e){
-    echo $e->getMessage();
-}
+    $db = new PDO('mysql:host=localhost;dbname=ezratp', 'root', 'VnCdE28u');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['formsignup'])){
+    $username = htmlspecialchars($_POST['username']);
+    $email = htmlspecialchars($_POST['email']);
+    $email2 = htmlspecialchars($_POST['email2']);
+    $password = sha1($_POST['password']);
+    $password2 = sha1($_POST['password2']);
     if(!empty($_POST['username']) AND !empty($_POST['email']) AND !empty($_POST['email2']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
-        echo "allrigh";
+        if(strlen($username) <= 255 OR strlen($email) <= 255 OR strlen($password) <= 255){
+            if($email == $email2){
+                if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    if ($password == $password2) {
+                        $insertmbr = $db->prepare("INSERT INTO users(username, email, password) VALUES (?, ?, ?)");
+                        $insertmbr->execute(array($username, $email, $password));
+                        $error = "OK !!";
+                    } else {
+                        $error = "Passwords does not match";
+                    }
+                }
+                else {
+                    $error = "Not a valid email";
+                }
+            }
+            else {
+                $error = "Email addresses does not match";
+            }
+        }
+        else {
+            $error = "parameters too long. Must not exceed 255 characters";
+        }
     }
-    else{
-        echo "ok";
+    else {
+        $error = "Missing informations";
     }
 }
 ?>
@@ -32,15 +52,29 @@ if(isset($_POST['formsignup'])){
                 <table>
                     <tr align="right">
                         <td><label for="username">Pseudo :</label></td>
-                        <td><input type="text" id="username" placeholder="Chose a username" name="username" /></td>
+                        <td>
+                            <input
+                                    type="text"
+                                    id="username"
+                                    placeholder="Chose a username"
+                                    name="username"
+                                    value="<?php if(isset($username)){ echo $username; }?>"
+                            />
+                        </td>
                     </tr>
                     <tr align="right">
                         <td><label for="email">Email :</label></td>
-                        <td><input type="text" id="email" placeholder="Enter your email address" name="email" /></td>
+                        <td><input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter your email address"
+                                    name="email"
+                                    value="<?php if(isset($email)){ echo $email; } ?>"
+                            /></td>
                     </tr>
                     <tr align="right">
                         <td><label for="email2">Email confirmation :</label></td>
-                        <td><input type="text" id="email2" placeholder="Confirm your email address" name="email2" /></td>
+                        <td><input type="email" id="email2" placeholder="Confirm your email address" name="email2" /></td>
                     </tr>
                     <tr align="right">
                         <td><label for="password">Password :</label></td>
@@ -56,6 +90,11 @@ if(isset($_POST['formsignup'])){
                     </tr>
                 </table>
             </form>
+            <?php
+                if(isset($error)){
+                    echo '<font colo="red"' . $error . '/>';
+                }
+            ?>
         </div>
     </body>
 </html>
