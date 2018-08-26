@@ -1,6 +1,13 @@
 <?php
 
-$bdd = new PDO('mysql:host=213.32.19.136:3306;dbname=users', 'root', 'VnCdE28u');
+try {
+    $bdd = new PDO('mysql:host=213.32.19.136:3306;dbname=users', 'root', 'VnCdE28u');
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e){
+    echo $e->getMessage();
+}
+
 if(isset($_POST['formsignup'])){
     if(!empty($_POST['username']) AND !empty($_POST['email']) AND !empty($_POST['email2']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
         echo "allrigh";
