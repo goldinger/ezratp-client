@@ -67,6 +67,13 @@ if(isset($_POST['formsignup'])){
         <div align="center">
             <h2>Sign up form</h2>
             <br><br><br>
+
+            <?php
+            if(isset($error)){
+                echo '<p color="red">' . $error . '</p>';
+            }
+            ?>
+
             <form method="POST" action="">
                 <table>
                     <tr align="right">
@@ -109,11 +116,6 @@ if(isset($_POST['formsignup'])){
                     </tr>
                 </table>
             </form>
-            <?php
-                if(isset($error)){
-                    echo '<font color="red">' . $error . '</font>';
-                }
-            ?>
         </div>
     </body>
 </html>
