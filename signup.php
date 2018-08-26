@@ -18,7 +18,7 @@ if(isset($_POST['formsignup'])){
                         $req_username->execute(array($username));
                         $username_exists = $req_username->rowCount();
                         if($username_exists == 0){
-                            $req_email = $db->prepare("SELECT * FROM user WHERE email = ?");
+                            $req_email = $db->prepare("SELECT * FROM users WHERE email = ?");
                             $req_email->execute(array($email));
                             $email_exists = $req_email->rowCount();
 
