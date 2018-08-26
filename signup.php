@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $bdd = new PDO('mysql:host=213.32.19.136:3306;dbname=ezratp', 'root', 'VnCdE28u');
+    $bdd = new PDO('mysql:host=mysql.sghir.me;dbname=ezratp', 'root', 'VnCdE28u');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (PDOException $e){
