@@ -111,7 +111,7 @@ if(isset($_POST['formsignup'])){
             </form>
             <?php
                 if(isset($error)){
-                    echo '<font colo="red"' . $error . '/>';
+                    echo '<font color="red">' . $error . '</font>>';
                 }
             ?>
         </div>
