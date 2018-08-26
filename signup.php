@@ -26,6 +26,7 @@ if(isset($_POST['formsignup'])){
                                 $insertmbr = $db->prepare("INSERT INTO users(username, email, password) VALUES (?, ?, ?)");
                                 $insertmbr->execute(array($username, $email, $password));
                                 $error = "OK !!";
+                                header("Location: index.php");
                             }
                             else {
                                 $error = "Email already exists";
