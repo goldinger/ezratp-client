@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +17,17 @@
             ?>
             <p><?php echo $mission ?></p>
             <?php
+        }
+        if(isset($_SESSION['id'])){
+            ?>
+        <form method="POST" action="addwatchlist.php"   >
+            <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
+            <input type="hidden" name="line" value="<?php echo $lineId; ?>">
+            <input type="hidden" name="station" value="<?php echo $stationName; ?>">
+            <input type="hidden" name="sens" value="<?php echo $sens; ?>">
+            <input type="submit" name="addwatchlist" value="Add to my Watchlist">
+        </form>
+<?php
         }
         ?>
 </body>
