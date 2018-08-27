@@ -11,12 +11,13 @@ if(isset($_POST['formsignin'])){
         $req_user = $db->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
         $req_user->execute(array($emailconnect, $passwordconnect));
         $correct_ids = $req_user->rowCount();
-        echo $correct_ids;
         if($correct_ids == 1){
             $user_info = $req_user->fetch();
             $connected = true;
             $_SESSION['id'] = $user_info['id'];
+            echo $user_info['username'];
             $_SESSION['username'] = $user_info['username'];
+            echo $_SESSION['username'];
             $_SESSION['email'] = $user_info['email'];
             $_SESSION['password'] = $user_info['password'];
         }
