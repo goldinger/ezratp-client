@@ -32,7 +32,7 @@ if($connected){
     $req_watchlist->execute(array($_SESSION['id']));
     while ($row = $req_watchlist->fetch()){
         ?>
-        <h4><?php echo $row['station']; ?></h4>
+        <h4><?php echo $row['station']; ?> | <?php echo $row['line']; ?> | <?php echo $row['sens']; ?></h4>
         <?php
         $missions = getNextMissions($row['line'], $row['station'], $row['sens']);
         foreach ($missions as $mission)
