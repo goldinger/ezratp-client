@@ -1,4 +1,5 @@
 <?php
+require('model.php');
 session_start();
 $db = new PDO('mysql:host=localhost;dbname=ezratp', 'root', 'VnCdE28u');
 
@@ -28,8 +29,19 @@ if($connected){
     <h3>Dashboard</h3>
     <?php
     $req_watchlist = $db->prepare("SELECT * FROM watchlist WHERE user_id = ?");
-    $req_watchlist->execute(array($_SESSION['email']));
-    echo $req_watchlist->rowCount();
+    $req_watchlist->execute(array($_SESSION['id']));
+    while ($row = $req_watchlist->fetch()){
+        ?>
+        <h4><?php echo $row['station']; ?></h4>
+        <?php
+        $missions = getNextMissions($row['line'], $row['station'], $row['sens']);
+        foreach ($missions as $mission)
+        {
+            ?>
+            <p><?php echo $mission ?></p>
+            <?php
+        }
+    }
     ?>
 <?php
 }
