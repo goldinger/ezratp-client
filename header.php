@@ -22,6 +22,9 @@ if(isset($_SESSION['email']) AND isset($_SESSION['password'])){
 if($connected){
 ?>
     <h3>Hello <?php echo $_SESSION['username'] ?></h3>
+    <form method="post" action="disconnect.php">
+        <input type="submit" name="disconnect" value="Disconnect">
+    </form>
     <h3>Dashboard</h3>
     <?php
     $req_watchlist = $db->prepare("SELECT * FROM watchlist WHERE user_id = ?");

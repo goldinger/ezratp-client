@@ -15,7 +15,6 @@ if(isset($_POST['formsignin'])){
             $_SESSION['username'] = $user_info['username'];
             $_SESSION['email'] = $user_info['email'];
             $_SESSION['password'] = $user_info['password'];
-            echo $_SESSION['email'];
         }
         else {
             $error_signin = "Wrong Ids";
