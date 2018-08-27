@@ -1,7 +1,7 @@
 <?php
 session_start();
 $db = new PDO('mysql:host=localhost;dbname=ezratp', 'root', 'VnCdE28u');
-echo "helloooo";
+echo $_SESSION['username'];
 
 if(isset($_POST['formsignin'])){
     $emailconnect = htmlspecialchars($_POST['emailconnect']);
