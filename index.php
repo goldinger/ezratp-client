@@ -11,9 +11,9 @@ if(isset($_POST['formsignin'])){
         $correct_ids = $req_user->rowCount();
         echo $correct_ids;
         if($correct_ids == 1){
-            echo "gello";
             $user_info = $req_user->fetch();
-            echo $user_info;
+            echo $user_info["email"];
+            echo $_SESSION['email'];
             $_SESSION['id'] = $user_info['id'];
             $_SESSION['username'] = $user_info['username'];
             $_SESSION['email'] = $user_info['email'];
@@ -36,18 +36,21 @@ if(isset($_POST['formsignin'])){
     <title>ezratp</title>
 </head>
 <body>
-
-<form method="POST" action="">
-    <input type="email" name="emailconnect" placeholder="email" />
-    <input type="password" name="passwordconnect" placeholder="password" />
-    <p style="color: red"><?php
-        if(isset($error_signin)){
-            echo $error_signin;
-        }
-        ?></p>
-    <input name="formsignin" type="submit" value="Sign in">
-</form>
-
+<?php
+if(isset($_SESSION['id'])) { ?>
+    <form method="POST" action="">
+        <input type="email" name="emailconnect" placeholder="email"/>
+        <input type="password" name="passwordconnect" placeholder="password"/>
+        <p style="color: red"><?php
+            if (isset($error_signin)) {
+                echo $error_signin;
+            }
+            ?></p>
+        <input name="formsignin" type="submit" value="Sign in">
+    </form>
+    <?php
+}
+?>
 
 <?php //include 'header.php'; ?>
 <h1>Check up a station :</h1>
