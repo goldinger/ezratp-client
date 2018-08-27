@@ -23,7 +23,7 @@ if($connected){
 <?php
 }
 else {
-
+    include 'signinForm.php';
 }
 ?>
 
