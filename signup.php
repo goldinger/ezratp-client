@@ -1,15 +1,18 @@
 <?php
-
+    session_start();
+    if(isset($_SESSION['email']) AND isset($_SESSION['password'])){
+        header("Location: index.php");
+    }
     $db = new PDO('mysql:host=localhost;dbname=ezratp', 'root', 'VnCdE28u');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['formsignup'])){
-    $username = htmlspecialchars($_POST['username']);
-    $email = htmlspecialchars($_POST['email']);
-    $email2 = htmlspecialchars($_POST['email2']);
-    $password = sha1($_POST['password']);
-    $password2 = sha1($_POST['password2']);
     if(!empty($_POST['username']) AND !empty($_POST['email']) AND !empty($_POST['email2']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
+        $username = htmlspecialchars($_POST['username']);
+        $email = htmlspecialchars($_POST['email']);
+        $email2 = htmlspecialchars($_POST['email2']);
+        $password = sha1($_POST['password']);
+        $password2 = sha1($_POST['password2']);
         if(strlen($username) <= 255 OR strlen($email) <= 255 OR strlen($password) <= 255){
             if($email == $email2){
                 if(filter_var($email, FILTER_VALIDATE_EMAIL)){
