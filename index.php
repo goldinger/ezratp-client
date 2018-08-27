@@ -1,7 +1,6 @@
 <?php
 session_start();
 $db = new PDO('mysql:host=localhost;dbname=ezratp', 'root', 'VnCdE28u');
-echo $_SESSION['username'];
 
 if(isset($_POST['formsignin'])){
     $emailconnect = htmlspecialchars($_POST['emailconnect']);
@@ -10,7 +9,9 @@ if(isset($_POST['formsignin'])){
         $req_user = $db->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
         $req_user->execute(array($emailconnect, $passwordconnect));
         $correct_ids = $req_user->rowCount();
+        echo $correct_ids;
         if($correct_ids == 1){
+            echo "gello";
             $user_info = $req_user->fetch();
             echo $user_info;
             $_SESSION['id'] = $user_info['id'];
