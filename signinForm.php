@@ -37,4 +37,6 @@ if(isset($_POST['formsignin'])){
     ?></p>
     <input name="formsignin" type="submit" value="Sign in">
 </form>
-
+<form method="POST" action="signup.php">
+    <input type="submit" value="Register">
+</form>
