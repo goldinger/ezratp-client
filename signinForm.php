@@ -10,11 +10,11 @@ if(isset($_POST['formsignin'])){
         $req_user->execute(array($emailconnect, $passwordconnect));
         $correct_ids = $req_user->rowCount();
         if($correct_ids == 1){
-            $req_user = $req_user->fetch();
-            $_SESSION['id'] = $req_user['id'];
-            $_SESSION['username'] = $req_user['username'];
-            $_SESSION['email'] = $req_user['email'];
-            $_SESSION['password'] = $req_user['password'];
+            $user_info = $req_user->fetch();
+            $_SESSION['id'] = $user_info['id'];
+            $_SESSION['username'] = $user_info['username'];
+            $_SESSION['email'] = $user_info['email'];
+            $_SESSION['password'] = $user_info['password'];
             header('Location: index.php');
         }
         else {
