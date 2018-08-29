@@ -18,3 +18,4 @@ if(isset($_SESSION['email']) AND isset($_SESSION['password'])){
         $_SESSION['password'] = $user_info['password'];
     }
 }
+?>

@@ -44,7 +44,7 @@
                                                 <div class="dot-hr"></div>
                                                 <span class="pull-left"><b><?php echo $missions[0]; ?> min</b></span>
                                                 <?php
-                                                if(sizeof($missions > 1)){
+                                                if(sizeof($missions) > 1){
                                                     ?>
                                                     <span class="pull-right"><?php echo $missions[1] ?> min</span>
                                                     <?php
