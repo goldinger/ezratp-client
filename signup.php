@@ -1,10 +1,10 @@
 <?php
-    session_start();
-    if(isset($_SESSION['email']) AND isset($_SESSION['password'])){
-        header("Location: index.php");
-    }
-    $db = new PDO('mysql:host=localhost;dbname=ezratp', 'root', 'VnCdE28u');
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require('dbConnection.php');
+session_start();
+if(isset($_SESSION['email']) AND isset($_SESSION['password'])){
+    header("Location: index-old.php");
+}
+$db = getDatabase();
 
 if(isset($_POST['formsignup'])){
     if(!empty($_POST['username']) AND !empty($_POST['email']) AND !empty($_POST['email2']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
@@ -29,7 +29,7 @@ if(isset($_POST['formsignup'])){
                                 $insertmbr = $db->prepare("INSERT INTO users(username, email, password) VALUES (?, ?, ?)");
                                 $insertmbr->execute(array($username, $email, $password));
                                 $error = "OK !!";
-                                header("Location: index.php");
+                                header("Location: index-old.php");
                             }
                             else {
                                 $error = "Email already exists";
@@ -72,11 +72,7 @@ if(isset($_POST['formsignup'])){
             <h2>Sign up form</h2>
             <br><br><br>
 
-            <?php
-            if(isset($error)){
-                echo '<p style="color: red">' . $error . '</p>';
-            }
-            ?>
+
 
             <form method="POST" action="">
                 <table>
