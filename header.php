@@ -31,7 +31,7 @@
                     <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.php')"
                             data-wow-delay="0.45s">Login</button>
                     <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('register.php')"
-                            data-wow-delay="0.48s">Submit</button>
+                            data-wow-delay="0.48s">Register</button>
                     <?php
                 }
                 ?>

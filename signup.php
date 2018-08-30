@@ -2,7 +2,7 @@
 require('dbConnection.php');
 session_start();
 if(isset($_SESSION['email']) AND isset($_SESSION['password'])){
-    header("Location: index-old.php");
+    header("Location: index.php");
 }
 $db = getDatabase();
 
@@ -29,7 +29,7 @@ if(isset($_POST['formsignup'])){
                                 $insertmbr = $db->prepare("INSERT INTO users(username, email, password) VALUES (?, ?, ?)");
                                 $insertmbr->execute(array($username, $email, $password));
                                 $error = "OK !!";
-                                header("Location: index-old.php");
+                                header("Location: index.php");
                             }
                             else {
                                 $error = "Email already exists";

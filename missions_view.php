@@ -9,7 +9,7 @@ session_start();
 </head>
 <body>
 <h1>Easy Ratp</h1>
-<h2>Station : <?php echo $stationName; ?></h2>
+<h2>Station : <?php echo $search; ?></h2>
 <h2>Line : <?php echo $lineName ?></h2>
         <?php
         foreach ($missions as $mission)
@@ -23,7 +23,7 @@ session_start();
         <form method="POST" action="addwatchlist.php"   >
             <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
             <input type="hidden" name="line" value="<?php echo $lineId; ?>">
-            <input type="hidden" name="station" value="<?php echo $stationName; ?>">
+            <input type="hidden" name="station" value="<?php echo $search; ?>">
             <input type="hidden" name="sens" value="<?php echo $sens; ?>">
             <input type="submit" name="addwatchlist" value="Add to my Watchlist">
         </form>

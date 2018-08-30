@@ -28,7 +28,7 @@ if(isset($_POST['formsignup'])){
                                 $insertmbr = $db->prepare("INSERT INTO users(username, email, password) VALUES (?, ?, ?)");
                                 $insertmbr->execute(array($username, $email, $password));
                                 $error = "OK !!";
-                                header("Location: index-old.php");
+                                header("Location: index.php");
                             }
                             else {
                                 $error = "Email already exists";
@@ -97,6 +97,34 @@ if(isset($_POST['formsignin'])){
         <!-- register-area -->
         <div class="register-area" style="background-color: rgb(249, 249, 249);">
             <div class="container">
+                <div class="col-md-6">
+                    <div class="box-for overflow">
+                        <div class="col-md-12 col-xs-12 login-blocks">
+                            <h2>Login : </h2>
+                            <p style="color: red">
+                                <?php
+                                if(isset($error_signin)){
+                                    echo $error_signin;
+                                }
+                                ?>
+                            </p>
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="emailconnect" id="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="passwordconnect" id="password">
+                                </div>
+                                <div class="text-center">
+                                    <input name="formsignin" type="submit" class="btn btn-default" value="Log in">
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
 
                 <div class="col-md-6">
                     <div class="box-for overflow">
@@ -146,45 +174,6 @@ if(isset($_POST['formsignin'])){
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="box-for overflow">                         
-                        <div class="col-md-12 col-xs-12 login-blocks">
-                            <h2>Login : </h2>
-                            <p style="color: red">
-                                <?php
-                                if(isset($error_signin)){
-                                    echo $error_signin;
-                                }
-                                ?>
-                            </p>
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" name="emailconnect" id="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="passwordconnect" id="password">
-                                </div>
-                                <div class="text-center">
-                                    <input name="formsignin" type="submit" class="btn btn-default" value="Log in">
-                                </div>
-                            </form>
-                            <br>
-                            
-                            <h2>Social login :  </h2> 
-                            
-                            <p>
-                            <a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a> 
-                            <a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a> 
-                            <a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>  
-                            </p> 
-                        </div>
-                        
-                    </div>
-                </div>
-
             </div>
         </div>      
 

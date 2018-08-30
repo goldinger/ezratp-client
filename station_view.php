@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Easy Ratp</h1>
-<p>Station : <?php echo $stationName; ?></p>
+<p>Station : <?php echo $search; ?></p>
 <form action="directions.php">
     <select name="stationData" size="10">
 <?php
