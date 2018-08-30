@@ -36,6 +36,7 @@ $stations = getStationsByName($search);
                             <?php
                             $i = 0;
                             foreach ($stations as $station){
+                                $i = $i + 1;
                                 ?>
                                 <form id="station<?php echo $i; ?>" method="post" action="directions.php">
                                     <input type="hidden" name="stationId" value="<?php echo $station->id; ?>"/>
