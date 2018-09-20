@@ -1,9 +1,9 @@
 <div class="slider">
     <div id="bg-slider" class="owl-carousel owl-theme">
 
-        <div class="item"><img src="assets/img/slide1/slider-image-1.jpg" alt="GTA V"></div>
-        <div class="item"><img src="assets/img/slide1/slider-image-2.jpg" alt="The Last of us"></div>
-        <div class="item"><img src="assets/img/slide1/slider-image-1.jpg" alt="GTA V"></div>
+        <div class="item"><img src="assets/ezratp/slider1.jpg" alt="Bus RATP"></div>
+        <div class="item"><img src="assets/ezratp/slider2.jpg" alt="Metro"></div>
+        <div class="item"><img src="assets/ezratp/slider3.jpg" alt="Tramway"></div>
 
     </div>
 </div>
