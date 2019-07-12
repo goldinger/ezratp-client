@@ -1,6 +1,6 @@
 <?php
 
-$base_url = "https://ezratp.sghir.me/api/";
+$base_url = "http://ezratp.sghir.me/api/";
 
 function getStationsByName($stationName)
 {
